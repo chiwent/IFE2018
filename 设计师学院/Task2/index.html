@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>No.2 - 初步接触 CSS 2D 变形</title>
+    <style>
+        .wrapper {
+            margin: 100px 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            display: table;
+            background-color: rgb(223, 213, 213);
+            color: #000;
+            text-align: center;
+            vertical-align: middle;
+            transition: 1s linear;
+        }
+        
+        #box1:hover {
+            transform: skew(30deg);
+            /* background-color: red; */
+        }
+        
+        #box2:hover {
+            transform: scale(0.5, 1);
+            animation: 2s infinite;
+        }
+        
+        #box3:hover {
+            transform: rotate(45deg);
+        }
+        
+        #box4:hover {
+            transform: translate(10px, 20px);
+        }
+        
+        #box5:hover {
+            /* animation: allMoving 4s infinite; */
+            transform: skew(30deg) scale(0.5, 1) rotate(45deg) translate(10px, 20px);
+        }
+        
+        @keyframes allMoving {
+            25% {
+                transform: skew(30deg);
+            }
+            50% {
+                transform: scale(0.5);
+            }
+            75% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: translate(10px, 20px);
+            }
+        }
+        
+        span {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center">
+        <h2>No.2 - 初步接触 CSS 2D 变形</h2>
+        <h5 style="color:green">参考</h5>
+        <a href="https://blog.csdn.net/shenjun1992722/article/details/51823472" style="text-decoration:none">【CSS3】transform变形</a>
+    </div>
+    <div class="wrapper">
+        <div id="box0" class="box"><span>Box0</span></div>
+        <div id="box1" class="box"><span>Box1</span></div>
+        <div id="box2" class="box"><span>Box2</span></div>
+        <div id="box3" class="box"><span>Box3</span></div>
+        <div id="box4" class="box"><span>Box4</span></div>
+        <div id="box5" class="box"><span>Box5</span></div>
+    </div>
+
+</body>
+
+</html>

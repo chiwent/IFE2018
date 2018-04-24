@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>No.1 - 制作一个简单的菜单动画效果</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            color: #000;
+            display: block;
+            margin-top: 100px;
+        }
+        
+        #bar {
+            height: 10px;
+            width: 0px;
+            margin: 20px auto;
+        }
+        
+        .active {
+            width: 200px;
+            background-color: #4f6cb7;
+            animation: barMoving 2s infinite;
+        }
+        
+        @keyframes barMoving {
+            0% {
+                width: 50px;
+            }
+            25% {
+                width: 200px;
+            }
+            65% {
+                width: 200px;
+            }
+            100% {
+                width: 0px;
+            }
+        }
+        
+        button {
+            display: block;
+            margin: 50px auto;
+            font-size: 30px;
+            line-height: 50px;
+            height: 50px;
+            width: 200px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 15px;
+            border: 2px solid grey;
+            cursor: pointer;
+            outline: none;
+            /*清除button元素四周的方框 */
+        }
+        /* 注意这里不是focus，否则按下后会一直保持focus的状态不会回到默认 */
+        
+        button:active {
+            background-color: #4f6cb7;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center">
+        <h2>No.1 - 制作一个简单的菜单动画效果</h2>
+        <h5 style="color:green">参考</h5>
+        <a href="http://www.w3school.com.cn/cssref/pr_keyframes.asp" style="text-decoration:none">CSS3 @keyframes 规则</a>
+    </div>
+
+
+    <h1>前端学院</h1>
+    <div id="bar"></div>
+    <button>切换样式</button>
+    <script>
+        var btn = document.getElementsByTagName('button')[0];
+        var text = document.getElementsByTagName('h1')[0];
+        var bar = document.getElementById('bar');
+        var timer = null;
+        btn.addEventListener('click', function() {
+            text.style.color = '#4f6cb7';
+            bar.className = 'active';
+            timer = setTimeout(function() {
+                text.style.color = '#000';
+                bar.removeAttribute('class');
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
