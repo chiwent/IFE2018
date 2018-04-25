@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task4-翻转图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin: 100px auto;
+            width: 250px;
+            height: 354px;
+            perspective: 1000;
+            transform-style: preserve-3d;
+        }
+        
+        .flip {
+            position: relative;
+            transition: 0.5s;
+            transform-style: preserve-3d;
+        }
+        
+        .front,
+        .back {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            backface-visibility: hidden;
+        }
+        
+        .front {
+            z-index: 2;
+        }
+        
+        .back {
+            transform: rotateY(-180deg);
+        }
+        
+        .container:hover .flip {
+            transform: rotateY(180deg);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="flip">
+            <div class="front">
+                <img src="正面.jpg" alt="front">
+            </div>
+            <div class="back">
+                <img src="反面.jpg" alt="back">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

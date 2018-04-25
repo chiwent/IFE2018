@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        #fullpage {
+            width: 80%;
+            height: 600px;
+            margin: 0 auto;
+            font-size: 0;
+            z-index: 1;
+        }
+        
+        #fullpage img {
+            position: fixed;
+            margin: 0 auto;
+            height: 100%;
+            width: 80%;
+            z-index: 1;
+        }
+        
+        #slide {
+            height: 150px;
+            position: relative;
+            bottom: -50px;
+            z-index: 999;
+        }
+        
+        ul {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        li {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+        }
+        
+        li img {
+            width: 200px;
+            height: 150px;
+            display: inline-block;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+        
+        @keyframes slideLeft {
+            0% {
+                left: -500px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        
+        #bg1:target {
+            z-index: 100;
+            -webkit-animation-name: slideLeft;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-name: slideLeft;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: 1;
+            -ms-animation-name: slideLeft;
+            -ms-animation-duration: 1s;
+            -ms-animation-iteration-count: 1;
+            -o-animation-name: slideLeft;
+            -o-animation-duration: 1s;
+            -o-animation-iteration-count: 1;
+            animation-name: slideLeft;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+        
+        @keyframes slideBottom {
+            0% {
+                top: 350px;
+            }
+            100% {
+                top: 0px;
+            }
+        }
+        
+        #bg2:target {
+            z-index: 100;
+            -webkit-animation-name: slideBottom;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-name: slideBottom;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: 1;
+            -ms-animation-name: slideBottom;
+            -ms-animation-duration: 1s;
+            -ms-animation-iteration-count: 1;
+            -o-animation-name: slideBottom;
+            -o-animation-duration: 1s;
+            -o-animation-iteration-count: 1;
+            animation-name: slideBottom;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+        
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.2)
+            }
+            100% {
+                transform: none;
+            }
+        }
+        
+        #bg3:target {
+            z-index: 100;
+            -webkit-animation-name: zoomIn;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-name: zoomIn;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: 1;
+            -ms-animation-name: zoomIn;
+            -ms-animation-duration: 1s;
+            -ms-animation-iteration-count: 1;
+            -o-animation-name: zoomIn;
+            -o-animation-duration: 1s;
+            -o-animation-iteration-count: 1;
+            animation-name: zoomIn;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+        
+        @keyframes zoomOut {
+            0% {
+                transform: scale(2);
+            }
+            100% {
+                transform: none;
+            }
+        }
+        
+        #bg4:target {
+            z-index: 100;
+            -webkit-animation-name: zoomOut;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-name: zoomOut;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: 1;
+            -ms-animation-name: zoomOut;
+            -ms-animation-duration: 1s;
+            -ms-animation-iteration-count: 1;
+            -o-animation-name: zoomOut;
+            -o-animation-duration: 1s;
+            -o-animation-iteration-count: 1;
+            animation-name: zoomOut;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(-360deg) scale(0.2);
+            }
+            100% {
+                transform: none;
+            }
+        }
+        
+        #bg5:target {
+            z-index: 100;
+            -webkit-animation-name: rotate;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-animation-name: rotate;
+            -moz-animation-duration: 1s;
+            -moz-animation-iteration-count: 1;
+            -ms-animation-name: rotate;
+            -ms-animation-duration: 1s;
+            -ms-animation-iteration-count: 1;
+            -o-animation-name: rotate;
+            -o-animation-duration: 1s;
+            -o-animation-iteration-count: 1;
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+        
+        @keyframes unTarget {
+            0% {
+                z-index: 80;
+            }
+            100% {
+                z-index: 80;
+            }
+        }
+        
+        .bg:not(:target) {
+            -webkit-animation-name: unTarget;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -moz-imation-name: unTarget;
+            -moz-imation-duration: 1s;
+            -moz-imation-iteration-count: 1;
+            -ms-imation-name: unTarget;
+            -ms-imation-duration: 1s;
+            -ms-imation-iteration-count: 1;
+            -o-imation-name: unTarget;
+            -o-imation-duration: 1s;
+            -o-imation-iteration-count: 1;
+            animation-name: unTarget;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="fullpage">
+        <img src="1.jpg" alt="1" id="bg1" class="bg">
+        <img src="2.jpg" alt="2" id="bg2" class="bg">
+        <img src="3.jpg" alt="3" id="bg3" class="bg">
+        <img src="4.jpg" alt="4" id="bg4" class="bg">
+        <img src="5.jpg" alt="5" id="bg5" class="bg">
+    </div>
+
+    <div id="slide">
+        <ul>
+            <li>
+                <!-- <img src="1.jpg"> -->
+                <a href="#bg1"><img src="1.jpg"></a>
+            </li>
+            <li>
+                <!-- <img src="2.jpg"> -->
+                <a href="#bg2"><img src="2.jpg"></a>
+            </li>
+            <li>
+                <!-- <img src="3.jpg"> -->
+                <a href="#bg3"><img src="3.jpg"></a>
+            </li>
+            <li>
+                <!-- <img src="4.jpg"> -->
+                <a href="#bg4"><img src="4.jpg"></a>
+            </li>
+            <li>
+                <!-- <img src="5.jpg"> -->
+                <a href="#bg5"><img src="5.jpg"></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
